@@ -6,21 +6,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Running the Application
 ```bash
-# Using the top-level main.py launcher (recommended)
-sudo -E python main.py
+# Using the smart launcher script (recommended - handles venv automatically)
+sudo -E ./run.sh
 
 # Specify network interface
-sudo -E python main.py -i eth0
+sudo -E ./run.sh -i eth0
 
 # Use custom config file  
-sudo -E python main.py -c custom_config.yaml
+sudo -E ./run.sh -c custom_config.yaml
 
-# Using virtual environment (recommended)
-sudo -E myenv/bin/python main.py
-
-# Alternative: Run as module
-sudo -E python -m src.network_dashboard.main -i eth0
+# Manual alternatives (if run.sh not available):
+sudo -E myenv/bin/python main.py          # Using virtual environment
+sudo -E python main.py                    # Using system Python
+sudo -E python -m src.network_dashboard.main -i eth0  # Module execution
 ```
+
+### Smart Launcher Features
+The `run.sh` script automatically:
+- Detects virtual environments (myenv, venv, .venv, etc.)
+- Finds the best Python version available
+- Verifies required packages (scapy, pyyaml) are installed
+- Falls back to system Python if no venv found
+- Provides helpful error messages and setup instructions
 
 ### Dependencies
 ```bash

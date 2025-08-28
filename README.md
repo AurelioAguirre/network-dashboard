@@ -87,14 +87,17 @@ sudo apt-get install nbtscan lsof python3-dev libpcap-dev
 
 ### Basic Usage
 ```bash
-# Run with default settings
-sudo -E /path/to/your/venv/bin/python network_dashboard.py
+# Using the smart launcher (automatically detects virtual environment)
+sudo -E ./run.sh
 
 # Specify network interface
-sudo -E /path/to/your/venv/bin/python network_dashboard.py -i eth0
+sudo -E ./run.sh -i eth0
 
 # Use custom configuration file
-sudo -E /path/to/your/venv/bin/python network_dashboard.py -c custom_config.yaml
+sudo -E ./run.sh -c custom_config.yaml
+
+# Manual execution (if launcher not available)
+sudo -E myenv/bin/python main.py
 ```
 
 ### Command Line Options
